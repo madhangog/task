@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <script>
+        document.createElement("element1")
+        </script>
+        <style>
+            element1{
+                font-size:25px;
+                color:rgb(4, 19, 37);
+                font-family:'Times New Roman';
+            }
+            body{
+                background-image:url({{home_url}});
+                background-size:cover;
+            }
+        </style>
+    </head>
+    
+    <body>
+            
+    <center><h1><img src={{home_url}} height=50px></h1></center>
+    
+ 
+        <center>
+            <form enctype="multipart/form-data" class="post-form" name="myform" style="border-radius:30px;width:300;height:500;background-color:rgba(33, 150, 165, 0.911)">
+                {% csrf_token %}
+                <element1>
+                <b>name</b><input type="text" name="username" style="background-color:whitesmoke;height:30px;width:200px">
+                <br>
+                <br>
+                <b> email</b><input type="email" name="email" style="background-color:whitesmoke;height:30px;width:200px">
+               <br>
+               <br>
+                <b> phone </b><input type="password" name="pword" style="background-color:whitesmoke;height:30px;width:200px">
+               <br>
+               <br>
+                <b> profile_image </b><input type="password" name="repword" style="background-color:whitesmoke;height:30px;width:200px">
+               <br>
+               <br>
+                <b> video </b><input type="number" name="mobile" style="background-color:whitesmoke;height:30px;width:200px">
+              <br>
+              <br>
+               <input type="button" value="Submit" onclick="validate()">
+               
+            </element1></form>
+        </center>
+        <script type = "text/javascript">
+        
+            function validate() {
+                var flag = 1;
+                var j=0;
+                var un = document.myform.username.value;
+                var pw = document.myform.pword.value;
+                var repw = document.myform.repword.value;
+                var email = document.myform.email.value;
+                var mobile = document.myform.mobile.value;
+                var valid = true;
+                var emailArray = ["!","#","$","%","^","&","*","(",")","-","+","=","[","]",";",":","<",">",",","/"];
+                for (var i=0; i <emailArray.length; i++) {
+                    for (var j=0;j<email.length;j++)
+                    {
+                    if (email[j] == emailArray[i]) {
+                        alert("Invalid Email ID "); 
+                        valid = false;
+                        break;
+                    }
+                    if ((flag == 1) && (email[j] == '@'))
+                    {
+                         alert("Invalid Email ID");
+                         flag = 0;
+                         valid = false;
+                         break;}
+                         flag = 0;}
+                    
+                }
+                if (valid) {   
+                    window.location = "view.html";
+                    return false;
+
+                }}
+        </script>
+    </body>
+</html>

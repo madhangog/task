@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script>
+        document.createElement("element1")
+        </script>
+        <style>
+            element1{
+                font-size:25px;
+                color:rgb(4, 19, 37);
+                font-family:'Times New Roman';
+            }
+            body{
+                background-image:url("home_bg2.jpg");
+                background-size:cover;
+            }
+        </style>
+    </head>
+    {% block content %}
+    <body>
+    <center><h1><img src="logo.png" height=50px></h1></center>
+    
+ 
+        <center>
+            <form enctype="multipart/form-data" class="post-form" name="myform" style="border-radius:30px;width:300;height:250;background-color:rgba(33, 150, 165, 0.911)">
+                {% csrf_token %}
+                <element1>
+                <br>
+                <b>USER NAME</b><input type=text name="username" style="background-color:whitesmoke;height:30px">
+                <br>
+                <br>
+               <b> PASSWORD </b><input type=text name="pword" style="background-color:whitesmoke;height:30px"><br>
+               <br>
+           
+               <input type="button" value="Submit" onclick="validate()">
+               
+            </element1></form>
+        </center>
+        <script type = "text/javascript">
+            function validate() {
+                var un = document.myform.username.value;
+                var pw = document.myform.pword.value;
+                var valid = false;
+                var unArray = ["sudhakaran"];
+                var pwArray = ["sudhakaran"];
+                for (var i=0; i <unArray.length; i++) {
+                    if ((un == unArray[i]) && (pw == pwArray[i])) {
+                    valid = true;
+                        break;
+                    }
+                }
+                if (valid) {   
+                    window.location = "view.html";
+                    return false;
+                }
+                else{
+                    alert("Invalid Username and/or Password ")
+                }
+                }
+        </script>
+    </body>
+    {% endblock %}
+</html>
